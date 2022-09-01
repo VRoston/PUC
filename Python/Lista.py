@@ -1,6 +1,8 @@
 '''
 Exemplo de listas em python
 '''
+import numpy
+
 
 lista = ['Sao Paulo','Palmeiras','Santos','Portuguesa']
 print(lista)
