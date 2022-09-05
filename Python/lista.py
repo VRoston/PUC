@@ -29,3 +29,20 @@ def multiplica(a,b=10):
 
 multiplica(10,40)
 multiplica(b=20,a=10)
+import funcoes
+print(funcoes.soma(20,40))
+import funcoes as fc
+print(fc.soma(8,8))
+from funcoes import soma
+print(soma(9,8))
+import math
+
+vet=(10,20,30)
+print(vet*3)
+import numpy as np
+vet2 = np.array([10,20,30])
+print(vet2.shape)
+print(vet2)
+
+a=np.array([1],[2],[3])
+print(a)
