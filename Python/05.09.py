@@ -15,5 +15,6 @@ for i in range(0,len(lista)):
     print(list[i], end=' ')
 print()
 
-for item i lista:
+for item in lista:
     print(item , end=' ')
+    
