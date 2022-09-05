@@ -17,4 +17,15 @@ print()
 
 for item in lista:
     print(item , end=' ')
-    
+
+'''
+Criando procedimentos e funcoes
+'''
+
+def multiplica(a,b=10):
+    c=a*b
+    print(f',valor de c e:{c}')
+
+
+multiplica(10,40)
+multiplica(b=20,a=10)
