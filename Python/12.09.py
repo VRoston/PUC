@@ -17,13 +17,21 @@ def cria_vetor3(vlist):
         res=np.zeros([3,1])
         for cl in range(0, len(vlist)):
             res[c1,0]=vlist[cl]
+        
+        return res
         print('OK')
         return
 
     raise ValueError("A sua lista deveria ter 3 posições")
 
+def checa_vetor3(m):
+    #Função para checa vetor não seja 3,1
+    #   se não for 3,1 gerar uma excessão
+    if m.shape !=(3,1):
+        raise ValueError("Seu vetor deve ter 3 linhas e 1 coluna")
+
 #if('__name__'=='__main__'):
-print('Inicinado os tesstes')
+print('Inicinado os testes')
 lista=[1,2,3]
 cria_vetor3(lista)
 
