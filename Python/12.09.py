@@ -17,35 +17,49 @@ def cria_vetor3(vlist):
         res=np.zeros([3,1])
         for cl in range(0, len(vlist)):
             res[c1,0]=vlist[cl]
-        
-        return res
         print('OK')
-        return
-
+        return res
     raise ValueError("A sua lista deveria ter 3 posições")
 
 def checa_vetor3(m):
     #Função para checa vetor não seja 3,1
     #   se não for 3,1 gerar uma excessão
-    if m.shape !=(3,1):
+    if m.shape != (3,1):
         raise ValueError("Seu vetor deve ter 3 linhas e 1 coluna")
+
+def produto_escalar(v1,v2)
+    return np.sum(v1*v2)
 
 #if('__name__'=='__main__'):
 print('Inicinado os testes')
 lista=[1,2,3]
 cria_vetor3(lista)
+print('teste 1 finalizado\n')
+lista2=[1,2,3]
+cria_vetor3(lista2)
+print('teste 2 finalizado\n')
 
 try:
-    lista2 = [1,2]
+    lista3 = [1,2]
     cria_vetor3(lista2)
 except ValueError as ve:
     print('ops, deu erro')
-    print(ve)
+    print(msg)
+print('Teste 3 finalizado\n')
 
 try:
-    list3 = ['case','if','else']
+    list4 = ['case','if','else']
     cria_vetor3(list3)
 except ValueError as msg:
     print(msg)
+print('teste 4 finalizado\n')
 
+try:
+    list5=[0.2,3.5]
+    res=cria_vetor3(lista5)
+    print(res)
+    checa_vetor3(res)
+except ValueError as msg
+    print(msg)
+print('teste 5 finalizado\n')
 print('Terminou os testes')
