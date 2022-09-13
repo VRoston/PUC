@@ -1,7 +1,7 @@
 ;Hello world com repeticoes (Exercicio 2)
 .MODEL SMALL
 .data
-    msg db 'bem vindo ao assembler',09,'$'
+    msg db 'hello world',9,'$'
 .CODE
     main proc
     mov ax,@data         ;inicializacao do ds
@@ -13,5 +13,7 @@ RETORNA:
         int 21h
         dec cl
         jnz RETORNA
+    mov ah,4ch
+    int 21h
 main endp
 end main
