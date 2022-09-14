@@ -12,7 +12,7 @@ VOLTA:
         INT 21H         ;Executa a função de impressão na tela
         LOOP VOLTA      ;Loop para imprimir os 10 asteriscos na mesma linha
     MOV CX,BX           ;Retorna o valor antigo de CX que estava salvo em BX
-    MOV AH,01           ;Entrade de um caractere
+    MOV AH,01           ;Entrade de um caractere para não imprimir todos os asteriscos de uma vez
     INT 21H             ;Executa a entrada de um caractere
     LOOP VOLTA1         ;Loop para imprimir os asteriscos na linha de baixo
 
