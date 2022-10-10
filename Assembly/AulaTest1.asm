@@ -2,9 +2,11 @@
 .DATA
 .CODE
 MAIN PROC
-    MOV AX,05
-    MOV BX,09
-    
+    MOV AX,FF0A1H
+    MOV BX,FF0B1h
+    CMP AX,BX
+     
+
 
 ;Finalização do programa    
     MOV AH,4CH          ;Finaliza o programa
