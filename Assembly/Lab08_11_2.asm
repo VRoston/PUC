@@ -4,12 +4,10 @@ TITLE NOME:VICTOR DE MELO ROSTON | RA:22006737
 .DATA
 .CODE
 MAIN PROC
-
     XOR BX,BX           ;inicializa BX com zero
     MOV CL,4            ;inicializa contador com 4
-    MOV AH,1h           ;prepara entrada pelo teclado
+    MOV AH,1h           
     INT 21h             ;entra o primeiro caractere
-;while
 TOPO: 
     CMP AL,0Dh          ;é o CR ?
     JE FIM
@@ -25,7 +23,7 @@ DESL:
     INT 21h             ;entra novo caractere
     JMP TOPO            ;faz o laço até que haja CR
 ;end_
-
+FIM:
                         ;BX já contem número binário
     MOV CH,4            ;CH contador de caracteres hexa
     MOV CL,4            ;CL contador de deslocamentos
@@ -51,7 +49,6 @@ PT1:
     JNZ TOPO2           ;faz o FOR 4 vezes
 ;end_for
 
-FIM:
     MOV AH,4CH          ;ENCERRA PROGRAMA
     INT 21H
 MAIN ENDP

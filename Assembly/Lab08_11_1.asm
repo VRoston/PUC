@@ -18,7 +18,7 @@ TOPO:
     OR BL,AL        ;insere o dígito no LSB de BL
     INT 21h         ;entra novo caractere
     LOOP TOPO       ;controla o máximo de 16 dígitos
-
+FIM:
 
     MOV CX,16       ;inicializa contador de bits
     MOV AH,02h      ;prepara para exibir no monitor
@@ -40,8 +40,6 @@ PT3:
     LOOP PT1 ;repete 16 vezes
 ;end_for
 
-
-FIM:
     MOV AH,4CH          ;ENCERRA PROGRAMA
     INT 21H
 MAIN ENDP
