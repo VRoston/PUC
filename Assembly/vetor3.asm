@@ -1,10 +1,11 @@
 .MODEL SMALL
 .STACK 0100h
 .DATA
-    MATRIZ DB 3 DUP (?)
-           DB 3 DUP (?)
-           DB 3 DUP (?)
-           
+    MATRIZ DB 4 DUP (?)
+           DB 4 DUP (?)
+           DB 4 DUP (?)
+           DB 4 DUP (?)
+
 .CODE
 MAIN PROC
     MOV AX, @DATA       ; inicializa o data
@@ -17,11 +18,6 @@ MAIN PROC
 
     CALL IMP_MAT
 
-    ;MOV AH,02
-    ;OR DL,20H
-    ;INT 21H
-
-
     MOV AH,4CH          ; encerra o programa
     INT 21H
 MAIN ENDP
@@ -31,14 +27,14 @@ LE_MAT PROC near
     ;  ENTRADA: BX offset da linha
     ;           SI OFFSET DA COLUNA
     ;           CX numero de elementos
-    ;  SAIDA:   matris lida
+    ;  SAIDA:   matriz lida
     PUSH CX
     PUSH BX
     PUSH SI
     MOV AH,1
-    MOV CL,3
+    MOV CL,4
 VOLTA:
-    MOV CH,3
+    MOV CH,4
 VOLTA1:
     INT 21H
     AND AL,0FH
@@ -69,13 +65,13 @@ IMP_MAT PROC near
     ;           SI OFFSET DA COLUNA
     ;           CX numero de elementos
     ;  SAIDA:   matris lida
-    ;   PUSH CX
-    ;   PUSH BX
-    ;   PUSH SI
+    PUSH CX
+    PUSH BX
+    PUSH SI
     MOV AH,2
-    MOV CL,3
+    MOV CL,4
 VOLTA2:
-    MOV CH,3
+    MOV CH,4
 VOLTA3:
 
     MOV DL, 10
@@ -96,8 +92,8 @@ VOLTA3:
     DEC CL
     JNZ VOLTA2
     
-    ;   POP BX
-    ;   POP CX
+    POP BX
+    POP CX
 
     RET
 IMP_MAT ENDP
