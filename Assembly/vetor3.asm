@@ -4,6 +4,7 @@
     MATRIZ DB 3 DUP (?)
            DB 3 DUP (?)
            DB 3 DUP (?)
+           
 .CODE
 MAIN PROC
     MOV AX, @DATA       ; inicializa o data
@@ -16,9 +17,9 @@ MAIN PROC
 
     CALL IMP_MAT
 
-    MOV AH,02
-    OR DL,20H
-    INT 21H
+    ;MOV AH,02
+    ;OR DL,20H
+    ;INT 21H
 
 
     MOV AH,4CH          ; encerra o programa
@@ -49,6 +50,10 @@ VOLTA1:
     ADD BX,3
     DEC CL
     JNZ VOLTA
+
+    MOV DL,10
+    MOV AH,02
+    INT 21H
     
     POP SI
     POP BX
@@ -64,10 +69,10 @@ IMP_MAT PROC near
     ;           SI OFFSET DA COLUNA
     ;           CX numero de elementos
     ;  SAIDA:   matris lida
-    PUSH CX
-    PUSH BX
-    PUSH SI
-    MOV AH,1
+    ;   PUSH CX
+    ;   PUSH BX
+    ;   PUSH SI
+    MOV AH,2
     MOV CL,3
 VOLTA2:
     MOV CH,3
@@ -83,13 +88,16 @@ VOLTA3:
     INC SI
     DEC CH
     JNZ VOLTA3
+    MOV DL,10
+    MOV AH,02
+    INT 21H
     AND BX,3
     ADD BX,3
     DEC CL
     JNZ VOLTA2
     
-    POP BX
-    POP CX
+    ;   POP BX
+    ;   POP CX
 
     RET
 IMP_MAT ENDP
