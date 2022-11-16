@@ -1,10 +1,9 @@
 TITLE NOME:VICTOR DE MELO ROSTON | RA:22006737
 
 .MODEL SMALL
-.STACK 0100h
 .DATA
-    MSG1 DB 10, 13, 'INPUT: ' ,'$'
-    MSG2 DB 10, 13, 'OUTPUT: ','$'
+    MSG1 DB 10, 13, '  INPUT: ' ,'$'
+    MSG2 DB 10, 13, '  OUTPUT: ','$'
     
 .CODE
 
@@ -28,12 +27,6 @@ MAIN PROC
 
     LEA DX, MSG1
     IMPRIME_MSG
-
-    XOR AX,AX
-    XOR BX,BX
-    XOR CX,CX
-    XOR DX,DX
-
     CALL INPUT
 
     PULA_LINHA
@@ -72,9 +65,9 @@ INPUT PROC
     PUSH DX
 @INICIO:
 ; imprime prompt ?
-    MOV AH,2
-    MOV DL,'?'
-    INT 21H ; imprime ?
+    ;MOV AH,2
+    ;MOV DL,'?'
+    ;INT 21H ; imprime ?
 ; total = 0
     XOR BX,BX
 
@@ -108,28 +101,28 @@ INPUT PROC
     PUSH AX
 ; total = total X 10 + digito
     MOV AX,10
-    MUL BX ; AX = total X 10
+    MUL BX          ; AX = total X 10
     POP BX
-    ADD BX,AX ; total - total X 10 + digito
+    ADD BX,AX       ; total - total X 10 + digito
 ; le caractere
     MOV AH,1
     INT 21H
-    CMP AL,13 ;CR ?
-    JNE @REP2 ; não, continua
+    CMP AL,13       ;CR ?
+    JNE @REP2       ; não, continua
     ; ate CR
-    MOV AX,BX ; guarda numero em AX
+    MOV AX,BX       ; guarda numero em AX
 ; se negativo
-    OR CX,CX ; negativo ?
-    JE @SAI ; sim, sai
+    OR CX,CX        ; negativo ?
+    JE @SAI         ; sim, sai
 ; entao
     NEG AX
 ; end if
 
 @SAI:
-    POP DX ; restaura registradores
+    POP DX          ; restaura registradores
     POP CX
     POP BX
-    RET ; retorna
+    RET             ; retorna
 
 @NODIG:
 ; se caractere ilegal
@@ -151,32 +144,32 @@ OUTPUT PROC
     PUSH CX
     PUSH DX
 ; if AX < 0
-    OR AX,AX ; AX < 0 ?
+    OR AX,AX           ; AX < 0 ?
     JGE @END_IF1
 ;then
-    PUSH AX ;salva o numero
+    PUSH AX             ;salva o numero
     MOV DL, '-'
     MOV AH,2
-    INT 21H ; imprime -
-    POP AX ; restaura numero
+    INT 21H             ; imprime -
+    POP AX              ; restaura numero
     NEG AX
 ; digitos decimais
 @END_IF1:
-    XOR CX,CX ; contador de d?gitos
-    MOV BX,10 ; divisor
+    XOR CX,CX           ; contador de d?gitos
+    MOV BX,10           ; divisor
 @REP1:
-    XOR DX,DX ; prepara parte alta do dividendo
-    DIV BX ; AX = quociente DX = resto
-    PUSH DX ; salva resto na pilha
-    INC CX ; contador = contador +1
+    XOR DX,DX           ; prepara parte alta do dividendo
+    DIV BX              ; AX = quociente DX = resto
+    PUSH DX             ; salva resto na pilha
+    INC CX              ; contador = contador +1
 ;until
-    OR AX,AX ; quociente = 0?
-    JNE @REP1 ; nao, continua
+    OR AX,AX            ; quociente = 0?
+    JNE @REP1           ; nao, continua
 ; converte digito em caractere
     MOV AH,2
 ; for contador vezes
 @IMP_LOOP:
-    POP DX ; digito em DL
+    POP DX              ; digito em DL
     OR DL,30H
     INT 21H
     LOOP @IMP_LOOP
