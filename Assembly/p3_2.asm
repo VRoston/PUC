@@ -1,0 +1,47 @@
+.MODEL SMALL
+.DATA
+    MSG1 DB 'E PAR','$'
+    MSG2 DB 'E IMPAR','$'
+.CODE
+MAIN PROC
+    MOV AX, @DATA
+    MOV DS, AX
+    MOV ES, AX
+
+    MOV AH,01
+    INT 21H
+    SUB AL,30H
+
+    RCR AL,1
+    RCL CL,1
+    ADD CL, 30H
+    CMP CL,31H
+    JE IMPAR
+    
+    XOR DX,DX
+    LEA BX,MSG1
+    MOV DX,BX
+    MOV AH,09H
+    INT 21H
+
+    JMP FIM
+IMPAR:
+    XOR DX,DX
+    LEA BX,MSG2
+    MOV DX,BX
+    MOV AH,09H
+    INT 21H
+FIM:
+
+    ;CALL PAR_IMP
+
+    MOV AH,4CH
+    INT 21H
+MAIN ENDP
+
+;PAR_IMP PROC
+;
+;    RET
+;PAR_IMP ENDP
+
+END MAIN
